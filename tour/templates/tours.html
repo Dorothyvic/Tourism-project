@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{%block content%}
+
+<div class="container-fluid">
+    <div class="tour-wraper">
+        <div class="tour-wraper1">
+            <div class="tourheader">
+                <h1>Popular Tours</h1>
+            </div><br>
+
+            <div class="cards-wraper">
+                {% for tour in tours%}
+                <div class="card1">
+
+                    <img src="{{tour.image.url}}" alt="image">
+                    <p class="header1">{{tour.header}}</p>
+                    <p class="description">{{tour.description}}</p>
+                    <p class="price">${{tour.price}}</p>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block content%}
+
+<div class="container3">
+    <h1 class="contact">contact us</h1>
+    {% if message_name %}
+        <div class="contact-message">
+            <h1>Thanks {{message_name}} </h1>
+            <p>We have received your email and we shall respond shortly</p>
+        </div>
+    {% else %}
+        <form action="." class="contact-form" method="post">
+            {%csrf_token%}
+            <div class="input-group">
+            <label>{{form.full_name.label}}*</label>
+                <input type="text" class="contact-input" placeholder="Enter Your name">
+            </div><br>
+            <div class="input-groups">
+                <div class="input-group">
+                    <label>{{form.email.label}}*</label>
+                    <input type="text" class="contact-input" placeholder="Enter Your email">
+                </div>
+                <div class="input-group">
+                    <label>{{form.phone.label}}*</label>
+                    <input type="text" class="contact-input" placeholder="Enter Your phone">
+                </div>
+
+            </div><br>
+
+            <div class="input-group">
+                <label>{{form.message.label}}*</label>
+                <textarea class="form-textarea" placeholder="Your message here..."></textarea>
+            </div>
+            <input type="submit" value="submit" class="input-bg">
+        </form>
+    {% endif %}
+</div>
+
+{%endblock%}
